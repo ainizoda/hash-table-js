@@ -25,3 +25,10 @@ test("Set values only with string or number", () => {
         fruitPrices.set(key, 100);
     }).toThrow("Type of hash key cannot be 'date'");
 });
+
+test("Two strings with a space in one of them must not be the same keys", () => {
+    fruitPrices.set(' orange ', 18);
+    fruitPrices.set('orange', 12);
+    expect(fruitPrices.get(" orange ")).toBe(18);
+    expect(fruitPrices.get("orange")).toBe(12);
+})
